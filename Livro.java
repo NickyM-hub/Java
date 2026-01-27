@@ -49,6 +49,8 @@ public class Livro {
     }
 }
 
+
+
 class Usuario {
     private String nome;
     private float idade;
@@ -57,9 +59,6 @@ class Usuario {
         this.nome = nome;
         this.idade = idade;
     }
-    
-    
-    
-    
+
     public void apresentar() {};
 }
