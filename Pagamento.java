@@ -1,4 +1,4 @@
 public interface Pagamento {
     
-    void processarPagamento(double valor);
+    public void processarPagamento(double valor);
 }

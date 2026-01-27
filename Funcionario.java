@@ -2,6 +2,22 @@ abstract class Funcionario implements Pagamento {
     private String nome;    
     private float salario;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public float getSalario() {
+        return salario;
+    }
+
+    public void setSalario(float salario) {
+        this.salario = salario;
+    }
+
     public Funcionario(String nome, float salario) {
         this.nome = nome;
         this.salario = salario;
@@ -9,7 +25,8 @@ abstract class Funcionario implements Pagamento {
     }
 
     @Override
-    public abstract processarPagamento(double valor);
+    public void processarPagamento(double valor) {
+    }
 
     abstract double calcularBonus();
 
@@ -17,33 +34,38 @@ abstract class Funcionario implements Pagamento {
 }
 
 class Bibliotecario extends Funcionario {
-    super(nome, salario);
+
+    public Bibliotecario(String nome, float salario) {
+        super(nome, salario);
+    }
 
     @Override
     public double calcularBonus() {
-        return salario * 0.01;
+        return getSalario() * 0.1;
     }
 
-    @Override 
-    public abstract void processarPagamento(double valor) {
-        valor * 0.2;
+    @Override
+    public void processarPagamento(double valor) {
+        double total = getSalario() + calcularBonus() + valor;
+        System.out.println("Pagamento total: " + total);
     }
 }
 
 class Gerente extends Funcionario {
-    private String nome;
-    private float salario;
-    
+
     public Gerente(String nome, float salario) {
-        this.nome = nome;
-        this.salario = salario;
-    }
-    
-    @Override
-    double calcularBonus() {
-        return salario * 0.1;
+        super(nome, salario);
     }
 
     @Override
-    public abstract void processarPagamento(double valor);
+    double calcularBonus() {
+        return getSalario() * 0.5;
+    }
+
+    @Override
+    public void processarPagamento(double valor) {
+        double total = getSalario() + calcularBonus() + valor;
+        System.out.println("Pagamento total: " + total);
+    }
 }
+
